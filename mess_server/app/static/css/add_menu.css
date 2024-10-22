@@ -1,0 +1,148 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+.container{
+
+    display: flex;
+    height: 100vh;
+}
+
+.menu_div{
+    flex: 0 0 15%;
+    background-color:rgb(66, 66, 66)
+}
+.hd_div{
+    margin-top: 10vh;
+    text-align: center;
+} h1 {
+    color: white;
+    font-family: Arial;
+    font-style: italic;
+}
+
+.dash_logo{
+    margin-top: 10vh;
+    text-align: center;
+} p {
+    color: white;
+    font-size: large;
+    margin-top: 0;
+    font-family: Arial;
+}
+.dash_img{
+    width: 100px;
+    height: 100px;
+}
+
+
+.form_container{
+    
+ 
+        width: 70%;
+        padding: 70px;
+        input{
+            padding: 10px;
+            border-color: #000000;
+            border-radius: 20px;
+        font-size: 16px;
+       
+        }
+    
+    input:focus {
+        border-color: #af4c4c;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+        outline: none;
+    }
+    
+    input::placeholder {
+        color: #000000;
+        font-style: italic;
+    }
+    .form_grid{
+        margin-left: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 20px;
+    }
+.input_1{
+    display: inline-flex;
+    flex-direction: column;
+    
+}
+
+.meal_opt{
+    display: inline-flex;
+     
+    text-align: left;
+    margin-left: 9vh;
+    text-decoration: solid;
+
+
+}
+input[type="checkbox"]{
+    width: 15px;  /* Increase the width */
+    height: 15px; /* Increase the height */
+    transform: scale(1.5); /* Scale it up */
+    -webkit-transform: scale(1.5); /* For older webkit browsers */
+}
+
+label {
+    font-size: 16px;
+}
+}
+
+.submit_button{
+    text-align: center;
+    
+}
+input[type="submit"] {
+    width: 68vw;
+    height: 5vh;
+    padding: 1px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 2vw;
+}
+
+
+input[type="submit"]:hover {
+    background-color: #555;
+}
+
+
+
+
+
+  
+.heading{
+    margin-top: .5vh;
+    text-align:center;
+   
+}
+.main_heading{
+    text-align: center;
+    margin-left: 10px;
+    font-size: 40px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form_container h1{
+    text-decoration-color:black ;
+}
+
+.option_grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 5px;
+}
+
+.red_text{
+    color: red;
+}

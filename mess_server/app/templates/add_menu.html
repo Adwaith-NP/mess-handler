@@ -8,6 +8,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/add_menu.css' %}">
+        <script src="{% static 'js/logic_setup.js' %}" defer></script>
     </head>
     <body>
         <div class="container"> 
@@ -18,7 +19,7 @@
                 </div>
         
                 <div class="dash_logo">
-                    <a href="dashboard.html">
+                    <a href="{% url 'main_app:dashboard_view' %}">
                         <img src="{% static 'img/dash.png' %}" class="dash_img">
                     </a>
                         <p>Dashboard</p>
@@ -28,8 +29,14 @@
                     <p>Add</p>
                 </div>
                 <div class="dash_logo">
-                    <img src="{% static 'img/list.png' %}" class="dash_img">
+                    <a href="{% url 'main_app:list' %}">
+                        <img src="{% static 'img/list.png' %}" class="dash_img">
+                    </a>
                     <p>Waiting list</p>
+                </div>
+                <div class="dash_logo">
+                    <img src="{% static 'img/order.png' %}" class="dash_img">
+                    <p>Order</p>
                 </div>
             </div>
 
@@ -40,45 +47,45 @@
                 <form method="post">
                     {%csrf_token%}
                     <div class="form_grid">
-                        <input type="user_Id" placeholder="User ID" id="user_field" name="user_field" disabled>
-                        <input type="text" placeholder="Enter Name" id="name_field" name="name_field" required>
-                        <input type="number" placeholder="Mobile number" id="num_field" name="num_field" required>
-                        <input type="text" placeholder="Location" id="loc_field" name="loc_field" required>
+                        <input type="user_Id" placeholder="User ID" id="userID_field" name="user_field" readonly>
+                        <input type="text" placeholder="Enter Name" id="name_field" name="name_field" >
+                        <input type="number" placeholder="Mobile number" id="num_field" name="num_field" >
+                        <input type="text" placeholder="Location" id="loc_field" name="loc_field" >
                         <input type="email" placeholder="Enter Email" id="email_field" name="email_field">
-                        <input type="number" placeholder="Total Amount" id="amo_field" name="amo_field" required>
-                        <input type="date" placeholder="Startdate" id="startDate" name="StartDate" required>
+                        <input type="number" placeholder="Total Amount" id="amo_field" name="amo_field" >
+                        <input type="date" placeholder="Startdate" id="startDate" name="StartDate" >
                         <input type="number" placeholder="Enter Days" id="days_field" name="days_field" onblur="set_end_date()">
-                        <input type="number" placeholder="Amount Given" id="given_field" name="given_field" required>
-                        <input type="text" placeholder="End Date" id="EndDate" disabled>
+                        <input type="number" placeholder="Amount Given" id="given_field" name="given_field" >
+                        <input type="text" placeholder="End Date" id="EndDate" name="EndDate" readonly>
                         
                     </div>
                     
                     <div class="form_grid">
                         <div class="option_grid">
                             <div>
-                                <input type="checkbox" name="addBREAKFAST" id="breakfast" value="BREAKFAST">
+                                <input type="checkbox" name="meals" id="meal_breakfast" value="BREAKFAST">
                                 <label>BREAKFAST</label>
                             </div>
                             <div>
-                                <input type="checkbox" name="addLUNCH" id="lunch" value="LUNCH">
+                                <input type="checkbox" name="meals" id="meal_lunch" value="LUNCH">
                                 <label>LUNCH</label>
                             </div>
                             <div>
-                                <input type="checkbox" name="addDINNER" id="dinner" value="DINNER">
+                                <input type="checkbox" name="meals" id="meal_dinner" value="DINNER">
                                 <label>DINNER</label>
                             </div>
                         </div>
                         <div class="option_grid">
                             <div>
-                                <input type="checkbox" name="endBREAKFAST" id="breakfast" value="ed_BREAKFAST">
+                                <input type="checkbox" name="end_meals" id="end_meal_breakfast" value="ed_BREAKFAST">
                                 <label>BREAKFAST</label>
                             </div>
                             <div>
-                                <input type="checkbox" name="endLUNCH" id="lunch" value="ed_LUNCH">
+                                <input type="checkbox" name="end_meals" id="end_meal_lunch" value="ed_LUNCH">
                                 <label>LUNCH</label>
                             </div>
                             <div>
-                                <input type="checkbox" name="endDINNER" id="dinner" value="ed_DINNER">
+                                <input type="checkbox" name="end_meals" id="end_meal_dinner" value="ed_DINNER">
                                 <label>DINNER</label>
                             </div>
                         </div>
@@ -89,6 +96,5 @@
                 </form>
             </div>
         </div>
-        <script src="{% static 'js/logic_setup.js' %}"></script>
     </body>
 </html>

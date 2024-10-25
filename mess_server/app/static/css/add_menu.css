@@ -23,7 +23,7 @@ body{
 }
 
 .dash_logo{
-    margin-top: 10vh;
+    margin-top: 8vh;
     text-align: center;
 } p {
     color: white;
@@ -32,8 +32,9 @@ body{
     font-family: Arial;
 }
 .dash_img{
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 0.5px;
 }
 
 

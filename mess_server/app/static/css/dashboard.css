@@ -1,0 +1,196 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    height: 100vh;
+}
+
+.menu_div{
+    flex: 0 0 15%; /* 20% width */
+    background-color:rgb(66, 66, 66)
+}
+.hd_div{
+    margin-top: 10vh;
+    text-align: center;
+} h1 {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+
+.dash_logo{
+    margin-top: 8vh;
+    text-align: center;
+} p {
+    color: white;
+    font-size: large;
+    margin-top: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.dash_img{
+    width: 70px;
+    height: 70px;
+    margin-bottom: 0.5px;
+}
+
+.search_div{
+    flex: 0 0 50%; /* 50% width */
+    background-color: white; /* Optional styling */
+}
+
+.search_bar_div{
+    text-align: center;
+    height: 20vh;
+} 
+#search_input{
+    margin-top: 6vh;
+    width: 40vw;
+    height: 6vh;
+    border-radius: 50px;
+    font-size: large;
+    text-align: left;
+}
+.search_result_div{
+    height: 70vh;
+    width: 100%;
+    overflow: auto;
+}
+
+.search_result_display{
+    margin-left: 5vw;
+    margin-top: 1vh;
+    width: 40vw;
+    border: none; /* Remove all borders */
+    border-bottom: 2px solid #000;
+}
+.serach_para_div{
+    display: inline-block;
+    width: 14vw;
+    margin-left: 4px;
+}
+.serach_para {
+    color: black;
+    text-align: left;
+    margin-top: 1.8vh;
+    display: inline-block;
+}
+.search_date_div{
+    display:inline-block;
+    border-left: 5vw;
+    width: 8vw;
+    text-align: center;
+}
+.search_date_red{
+    display: inline-block;
+    color: red;
+    margin-top: 1.8vh;
+}
+
+.search_date_green{
+    display: inline-block;
+    color: green;
+    margin-top: 1.8vh;
+}
+
+.detail_button{
+    width: 8vw;
+    height: 5vh;
+    border: none;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5vw;
+    background-color: rgb(66, 66, 66);
+    color: white;
+    border-radius: 20px;
+}
+
+.exp_div{
+    flex: 0 0 35%; /* 30% width */
+    background-color: white; /* Optional styling */
+  
+}
+.heading{
+    margin-top: 5.5vh;
+    text-align: center;
+}
+.main_heading{
+    margin-left: 10px;
+    font-size: 42px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.red-text{
+    color: red;
+}
+.exp_box{
+    border-style: solid;
+    width: 70%;
+    height: 80vh;
+    margin-left: 6vw;
+    border-radius: 30px;
+    background-color:rgb(66, 66, 66);
+}
+.date_div{
+    width: 24.5vw;
+    height: 10vh;
+    text-align: center;
+}
+
+.date {
+    margin-top: 2vh;
+    appearance: none; /* Remove default styling (for WebKit browsers) */
+    -webkit-appearance: none; /* Remove default styling for Chrome/Safari */
+    -moz-appearance: textfield; /* For Firefox */
+    background: url('img/calendar.png') no-repeat right 10px center; /* Custom icon */
+    background-size: 30px 30px;
+    padding-right: 40px; /* Make space for the icon */
+    border-radius: 15px;
+    background-color: #e55656;
+    width: 20vw;
+    height: 5vh;
+    border-style: solid;
+    border-color: #000;
+    font-size: large;
+    color: white;
+    text-align: center;
+}
+
+.date::-webkit-inner-spin-button,
+.date::-webkit-calendar-picker-indicator {
+    display: none; /* Hide the default calendar icon in Chrome/Safari */
+}
+
+.exp_display_box{
+    height: 78vh;
+    overflow: auto;
+}
+
+.exp{
+    padding-top: 15px;
+    width: 23vw;
+    height: 4vh;
+    margin-top: 1.5vh;
+    margin-left: 1vh;
+    border-radius: 25px;
+    border: none;
+    background-color: white;
+    text-align: center;
+}
+
+.exp p {
+    color: black;
+}
+
+.branding{
+    text-align: right;
+}
+
+.branding p{
+    font-size: 12px;
+    color: #000;
+    margin-top: 10px;
+    margin-right: 59px;
+}

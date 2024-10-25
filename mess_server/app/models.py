@@ -10,6 +10,10 @@ class customer_data(models.Model):
     email = models.EmailField(null=True)
     startDate = models.DateField(null=False)
     totalDays = models.IntegerField(null=False)
+    exp_date = models.DateField(null=False)
+    # money given and due money
+    givenMoney = models.FloatField(null=False,default=0.0)
+    totalMoney = models.FloatField(null=False,default=0.0)
     # Meal preferences
     breakFast = models.BooleanField(default=False)
     lunch = models.BooleanField(default=False)

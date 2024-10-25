@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="xml">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/List.css' %}">
+        <script src="{% static 'js/List.js' %}" defer></script>
+    </head>
+    <body>
+        <div class="container"> 
+            
+            <div class="menu_div">
+                <div class="hd_div">
+                        <h1 class="heading_1">POOPY'S</h1>
+                    </div>
+            
+                <div class="dash_logo">
+                        <a href="{% url 'main_app:dashboard_view' %}">
+                            <img src="{% static 'img/dash.png' %}" class="dash_img">
+                        </a>
+                            <p>Dashboard</p>
+                    </div>
+                <div class="dash_logo">
+                    <a href="{% url 'main_app:add_customer' %}">
+                        <img src="{% static 'img/user.png' %}" class="dash_img">
+                    </a>
+                        <p>Add</p>
+                    </div>
+                <div class="dash_logo">
+                        <img src="{% static 'img/list.png' %}" class="dash_img">
+                        <p>List</p>
+                    </div>
+                <div class="dash_logo">
+                        <img src="{% static 'img/order.png' %}" class="dash_img">
+                        <p>Order</p>
+                    </div>
+            </div>
+
+            <div class="heading">
+                <h1 class="main_heading">POOPY'S <span class="red-text">KITCHEN</span></h1>
+            </div>
+
+            
+            
+            <div class="search_result_div" id = "search_result_div_id">
+                <div class="search_result_display">
+                    <div class="serach_para_div">
+                        <p class="serach_para">Jalal</p>
+                    </div>
+                    <div class="search_date_div">
+                        <p class="search_date_green">22/02/2003</p>
+                    </div>
+                    <button class="detail_button">Details</button>
+                </div>
+            </div>
+            
+
+            <div class="dropdown">
+                <button class="dropbtn" id="drop_btn">Expired</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="exp_persons()">Expired</a>
+                    <a href="#" onclick="remainingMoney()">Payment</a>
+                    <a href="#">Break Fast</a>
+                    <a href="#">Lunch</a>
+                    <a href="#">Dinner</a>
+                </div>  
+            </div>
+       
+    </body>
+</html>

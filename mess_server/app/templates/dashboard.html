@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+        <script src="{% static 'js/dashboard.js' %}" defer></script>
+    </head>
+    <body>
+        <div class="container"> 
+            
+            <div class="menu_div">
+                <div class="hd_div">
+                    <h1 class="heading_1">POOPY'S</h1>
+                </div>
+        
+                <div class="dash_logo">
+                    <a>
+                        <img src="{% static 'img/dash.png' %}" class="dash_img">
+                        <p>Dashboard</p>
+                    </a>
+                </div>
+                <div class="dash_logo">
+                    <a href="{% url 'main_app:add_customer' %}">
+                        <img src="{% static 'img/user.png' %}" class="dash_img">
+                    </a>
+                        <p>Add</p>
+                </div>
+                <div class="dash_logo">
+                    <a href="{% url 'main_app:list' %}">
+                        <img src="{% static 'img/list.png' %}" class="dash_img">
+                    </a>
+                    <p>Waiting list</p>
+                </div>
+                <div class="dash_logo">
+                    <img src="{% static 'img/order.png' %}" class="dash_img">
+                    <p>Order</p>
+                </div>
+                
+            </div>
+
+            <div class="search_div">
+                <div class="search_bar_div">
+                    <input type="search" placeholder="Search..." name="search" id="search_input" >
+                </div>
+                <div class="search_result_div" id="search_result_div_id">
+                </div>
+            </div>
+
+            <div class="exp_div">
+                <div class="heading">
+                    <h1 class="main_heading">POOPY'S <span class="red-text">KITCHEN</span></h1>
+                </div>
+                <div class="exp_box">
+                    <!-- <div class="date_div">
+                        <input type="date" name="selected_date" id="selected_date" class="date">
+                    </div> -->
+                    <div class="exp_display_box">
+                        {% for person in exp_persons %}
+                        <a>
+                            <div class="exp">
+                                <p>{{person.name}}</p>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="branding">
+                    <p>© TECH LUMINOUS</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

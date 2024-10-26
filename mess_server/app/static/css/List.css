@@ -76,6 +76,13 @@ p {
     display: inline-block;
 }
 
+.serach_para_red {
+    color: red;
+    text-align: left;
+    margin-top: 1.8vh;
+    display: inline-block;
+}
+
 .search_date_div {
     display: inline-block;
     width: 8vw;

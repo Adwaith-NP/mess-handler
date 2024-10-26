@@ -10,4 +10,6 @@ urlpatterns = [
     path("dashboard/",views.dashboard_view,name='dashboard_view'),
     path("userList/",views.userList,name="list"),
     path("userListAPI/",views.userListAPI,name="listAPI"),
+    path("detail-edit/<str:userID>/",views.detailEdit,name="detailEdit"),
+    path("detail-editAPI/",views.detailEditAPI,name="detailEditAPI"),
 ]

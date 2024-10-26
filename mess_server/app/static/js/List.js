@@ -10,7 +10,9 @@ function exp_person_set_up(object){
                     <div class="search_date_div">
                         <p class="search_date_red">${element['expDate']}</p>
                     </div>
-                    <button class="detail_button">Details</button>
+                    <a href="http://127.0.0.1:8000/detail-edit/${element['userID']}/">
+                            <button class="detail_button">Details</button>
+                    </a>
             </div>`
         )
     });
@@ -28,9 +30,48 @@ function showRemainingMoney(object){
                     <div class="search_date_div">
                         <p class="search_date_red">₹ ${element['dueAmount']}</p>
                     </div>
-                    <button class="detail_button">Details</button>
+                    <a href="http://127.0.0.1:8000/detail-edit/${element['userID']}/">
+                            <button class="detail_button">Details</button>
+                    </a>
             </div>`
         )
+    });
+}
+
+function sectionFastShow(object){
+    document.getElementById('search_result_div_id').innerHTML = '';
+    const parentDiv = document.getElementById('search_result_div_id');
+    object.forEach(element => {
+        if(element['color'] === 'red'){
+            parentDiv.insertAdjacentHTML('beforeend',
+                `<div class="search_result_display">
+                        <div class="serach_para_div">
+                            <p class="serach_para_red">${element['name']}</p>
+                        </div>
+                        <div class="search_date_div">
+                            <p class="search_date_red">${element['location']}</p>
+                        </div>
+                        <a href="http://127.0.0.1:8000/detail-edit/${element['userID']}/">
+                            <button class="detail_button">Details</button>
+                        </a>
+                </div>`
+        )
+        }
+        else{
+            parentDiv.insertAdjacentHTML('beforeend',
+                `<div class="search_result_display">
+                        <div class="serach_para_div">
+                            <p class="serach_para">${element['name']}</p>
+                        </div>
+                        <div class="search_date_div">
+                            <p class="search_date_green">${element['location']}</p>
+                        </div>
+                        <a href="http://127.0.0.1:8000/detail-edit/${element['userID']}/">
+                            <button class="detail_button">Details</button>
+                        </a>
+                </div>`
+            )
+        }
     });
 }
 
@@ -42,6 +83,21 @@ function exp_persons(){
 function remainingMoney(){
     collectData('Payment')
     document.getElementById('drop_btn').innerText = "Payment";
+}
+
+function breakFast(){
+    collectData('Break_Fast')
+    document.getElementById('drop_btn').innerText = "Break Fast";
+}
+
+function lunch(){
+    collectData('lunch')
+    document.getElementById('drop_btn').innerText = "Lunch";
+}
+
+function dinner(){
+    collectData('dinner')
+    document.getElementById('drop_btn').innerText = "Dinner";
 }
 
 function collectData(theam){
@@ -64,6 +120,12 @@ function collectData(theam){
             }
             else if(theam === "Payment"){
                 showRemainingMoney(data.message)
+            }
+            else if(["Break_Fast", "lunch", "dinner"].includes(theam)){
+                sectionFastShow(data.message)
+            }
+            else{
+                alert("An error occurred")
             }
         } else {
             alert('Error: ' + data.error);

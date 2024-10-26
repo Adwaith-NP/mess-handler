@@ -5,6 +5,7 @@ from .models import customer_data
 from django.db.models import F
 from datetime import timedelta,datetime
 from django.utils import timezone
+from django.forms.models import model_to_dict
 
 # Create your views here.
 def is_valid_email(email):
@@ -116,6 +117,7 @@ def search_query(request):
             result = customer_data.objects.filter(name__icontains = data)
             result_list = [{'name':person.name,'startDate':person.startDate,'end_date':person.exp_date,'userID':person.userID} for person in result]
             returnData = validatePersons(result_list)
+            print(returnData)
             # return the search result
             return JsonResponse({'message': returnData}, status=200)
         else:
@@ -148,9 +150,49 @@ def userListAPI(request):
                 remainMoneyPersons = customer_data.objects.exclude(totalMoney=F('givenMoney'))
                 due_money_persons = [{'name':person.name,'dueAmount':(person.totalMoney-person.givenMoney),'userID':person.userID} for person in remainMoneyPersons]
                 return JsonResponse({'message': due_money_persons}, status=200)
+            elif data == 'Break_Fast':
+                break_fast_customers = customer_data.objects.filter(breakFast = True)
+                break_fast_customers_data = [
+                    {'name':person.name,'location':person.location,
+                     'userID':person.userID,'end_date':person.exp_date} for person in break_fast_customers
+                    ]
+                exp_break_fast_customers_data = validatePersons(break_fast_customers_data)
+                return JsonResponse({'message': exp_break_fast_customers_data}, status=200)
+            elif data == 'lunch':
+                lunch_customers = customer_data.objects.filter(lunch = True)
+                lunch_customers_data = [
+                    {'name':person.name,'location':person.location,
+                     'userID':person.userID,'end_date':person.exp_date} for person in lunch_customers
+                    ]
+                exp_lunch_customers_data = validatePersons(lunch_customers_data)
+                return JsonResponse({'message': exp_lunch_customers_data}, status=200)
+            elif data == 'dinner':
+                dinner_customers = customer_data.objects.filter(dinner = True)
+                dinner_customers_data = [
+                    {'name':person.name,'location':person.location,
+                     'userID':person.userID,'end_date':person.exp_date} for person in dinner_customers
+                    ]
+                exp_dinner_customers_data = validatePersons(dinner_customers_data)
+                return JsonResponse({'message': exp_dinner_customers_data}, status=200)
             else:
                 return JsonResponse({'message': 'Invalid thaem selected'}, status=400)
         else:
             return JsonResponse({'message': 'No name provided'}, status=400)
+    else:
+        return JsonResponse({'message': 'Invalid request method'}, status=405)
+    
+    
+def detailEdit(request,userID):
+    return render(request,'custo_details.html',{'userID':userID})
+
+def detailEditAPI(request):
+    if request.method == 'GET':
+        data = request.GET.get('userID', None)
+        if data:
+            userData = customer_data.objects.get(userID = data)
+            userDataToDic = model_to_dict(userData)
+            return JsonResponse({'message': userDataToDic}, status=200)
+        else:
+            return JsonResponse({'message': 'No userID provided'}, status=400)
     else:
         return JsonResponse({'message': 'Invalid request method'}, status=405)

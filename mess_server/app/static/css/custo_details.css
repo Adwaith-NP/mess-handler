@@ -1,0 +1,201 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display:flex;
+    height: 100vh;
+    max-height: 100vh;
+}
+
+.menu_div{
+    flex: 0 0 15%;
+    background-color:rgb(66, 66, 66)
+}
+.hd_div{
+    margin-top: 10vh;
+    text-align: center;
+} h1 {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+
+.dash_logo{
+    margin-top: 8vh;
+    text-align: center;
+} p {
+    color: white;
+    font-size: large;
+    margin-top: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.dash_img{
+    width: 70px;
+    height: 70px;
+    margin-bottom: 0.5px;
+}
+
+.form_container{
+    display:fle;
+   
+    
+ 
+        width: 70%;
+        padding: 70px;
+        input{
+            padding: 10px;
+            border-color: #000000;
+            border-radius: 20px;
+        font-size: 16px;
+       
+        }
+        .form_details{
+            text-transform: uppercase;
+            display:flex;
+            flex-direction: column;
+    
+    gap: 15px;
+    margin-top: 20px;
+        }
+    .form_group{
+
+        
+
+        text-transform: uppercase;
+       height: 3vw;
+        display:flex;
+        align-items:center;
+        gap: 10px;
+        width: 100%;
+    }
+
+.form_group label {
+    width: 120px; /* Set a fixed width for label alignment */
+    font-size: 16px;
+    color: #333;
+}
+
+.form_group input[type="text"],
+.form_group input[type="tel"],
+.form_group input[type="email"],
+.form_group input[type="number"],
+.form_group input[type="date"] {  
+  
+.form_half{
+    
+ 
+
+    }
+    .form_half{
+        
+        
+    }
+    .form_half label{
+        width: 120px;
+        flex: 1;
+        padding: 10px;
+        border-color: #000000;
+        border: 2px solid #000;
+        border-radius: 20px;
+        font-size: 10px;
+    
+
+    }
+    .form_half input {
+        width: 100%;
+        padding: 8px;
+    }
+
+    input:focus {
+        border-color: #af4c4c;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+        outline: none;
+    }
+    
+    input::placeholder {
+        color: #000000;
+        font-style: italic;
+    }
+    .form_details{
+        margin-left: 3px;
+        display:flex;
+        gap: 10px;
+        margin-bottom: 2px;
+    }
+
+    
+}
+
+
+input[type="checkbox"]{
+    width: 15px;  /* Increase the width */
+    height: 15px; /* Increase the height */
+    transform: scale(1.5); /* Scale it up */
+    -webkit-transform: scale(1.5); /* For older webkit browsers */
+}
+
+label {
+    font-size: 16px;
+}
+
+._button .button1{
+    text-align: center;
+    padding: 10px;
+    background-color: #f10c0c;
+            border-color: #000000;
+            border-radius: 20px;
+    
+}
+._button .button2{
+    text-align: center;
+    padding: 10px;
+    background-color: #16c35e;
+            border-color: #000000;
+            border-radius: 20px;
+    
+}
+input[type="button"] {
+   width: 17vw;
+    height: 5vh;
+    padding: 1px 20px;
+    
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 2vw;
+    margin-top:12px;
+}
+
+
+input[type="button"]:hover {
+    background-color: #555;
+}
+
+  
+.heading{
+    margin-top: 0%;
+    text-align:right;
+   
+}
+.main_heading{
+    position: relative;
+    text-align:center;
+    top: 80px;
+    font-size: 40px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.sub_heading{
+    text-align: right;
+    color: #000000;
+
+}
+
+.form_container h1{
+    text-decoration-color:black ;
+}
+
+}

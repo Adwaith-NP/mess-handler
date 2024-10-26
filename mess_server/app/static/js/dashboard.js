@@ -11,8 +11,24 @@ function addElementToDiv(object){
                         <div class="search_date_div">
                             <p class="search_date_green">${ element['end_date'] }</p>
                         </div>
-                        <button class="detail_button">Details</button>
+                        <a href="http://127.0.0.1:8000/detail-edit/${element['userID']}/">
+                            <button class="detail_button">Details</button>
+                        </a>
                     </div>`)
+        }
+        else{
+            parentDiv.insertAdjacentHTML('beforeend',`
+                <div class="search_result_display">
+                    <div class="serach_para_div">
+                        <p class="serach_para">${ element['name'] }</p>
+                    </div>
+                    <div class="search_date_div">
+                        <p class="search_date_red">${ element['end_date'] }</p>
+                    </div>
+                    <a href="http://127.0.0.1:8000/detail-edit/${element['userID']}/">
+                        <button class="detail_button">Details</button>
+                    </a>
+                </div>`)
         }
     });
 }

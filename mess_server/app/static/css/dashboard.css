@@ -6,6 +6,7 @@ body{
 .container{
     display: flex;
     height: 100vh;
+    z-index: 1;  
 }
 
 .menu_div{
@@ -113,7 +114,7 @@ body{
   
 }
 .heading{
-    margin-top: 5.5vh;
+    margin-top: 3.2vh;
     text-align: center;
 }
 .main_heading{
@@ -193,4 +194,82 @@ body{
     color: #000;
     margin-top: 10px;
     margin-right: 59px;
+}
+.setting_img{
+    width: 34vw;             /* Set the div width to 10% of viewport width */
+    display: flex;           /* Use flexbox for alignment */
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+.setting_img img {
+    width: 30px;            /* Set the image width */
+    height: 30px;           /* Set the image height */
+}
+
+.settings{
+    display: none;
+    position: fixed;            /* Positions the div relative to the viewport */
+    top: 30%;                   /* Move to the middle of the viewport vertically */
+    left: 30%;     
+    border: solid;
+    border-radius: 15px;
+    width: 40vw;
+    height: 40vh;
+    background-color: white;       /* Optional background color */
+    z-index: 2;       
+}
+
+.top_window{
+    width: 100%;
+    display: flex;
+}
+.win_heading{
+    text-align: right;
+    width: 70%;
+}
+.win_heading h3{
+    display: block;
+    margin-right: 5vw;
+}
+.close_win{
+    display: flex; 
+    justify-content: flex-end;
+    width: 30%;
+}
+.close_win img{
+    width: 25px;
+    height: 25px;
+}
+
+.content_window{
+    margin-top: 40px;
+    padding-left: 15px;
+}
+
+.content_window button{
+    background-color:rgb(66, 66, 66);
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 29.5vw;
+    height: 5vh;
+    margin-left: 40px;
+}
+
+.content_window input{
+    width: 20vw;
+    height: 5vh;
+    border-radius: 15px;
+    margin-left: 25px;
+}
+
+.content_window label{
+    margin-left: 40px;
+}
+
+.end_setup{
+    margin-top: 10px;
+}
+.end_setup input{
+    margin-left: 53px;
 }

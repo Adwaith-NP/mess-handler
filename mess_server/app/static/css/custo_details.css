@@ -38,7 +38,8 @@ body{
 }
 
 .form_container{
-    display:fle;
+    display:flex;
+    margin-top: 6vw;
    
     
  
@@ -56,8 +57,32 @@ body{
             display:flex;
             flex-direction: column;
     
-    gap: 15px;
-    margin-top: 20px;
+    gap: 12px;
+    
+        }
+        .form_row {
+            display: flex;
+            gap: 7px; /* Space between Mobile and Email sections */
+        }
+        
+        .form_half {
+            flex: 1;
+            display: flex;
+            align-items:center;
+            gap: 1px;
+            
+        }
+        
+        .form_half label {
+            width: 100%; /* Adjust label width if necessary */
+        }
+        
+        .form_half input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #000;
+            border-radius: 20px;
+            font-size: 16px;
         }
     .form_group{
 
@@ -67,12 +92,14 @@ body{
        height: 3vw;
         display:flex;
         align-items:center;
-        gap: 10px;
+        gap: 5px;
         width: 100%;
     }
 
 .form_group label {
-    width: 120px; /* Set a fixed width for label alignment */
+
+    
+    width: 8vw;
     font-size: 16px;
     color: #333;
 }
@@ -88,25 +115,7 @@ body{
  
 
     }
-    .form_half{
-        
-        
-    }
-    .form_half label{
-        width: 120px;
-        flex: 1;
-        padding: 10px;
-        border-color: #000000;
-        border: 2px solid #000;
-        border-radius: 20px;
-        font-size: 10px;
-    
 
-    }
-    .form_half input {
-        width: 100%;
-        padding: 8px;
-    }
 
     input:focus {
         border-color: #af4c4c;
@@ -119,6 +128,7 @@ body{
         font-style: italic;
     }
     .form_details{
+        margin-top: 10vw;
         margin-left: 3px;
         display:flex;
         gap: 10px;
@@ -130,15 +140,18 @@ body{
 
 
 input[type="checkbox"]{
+
+
     width: 15px;  /* Increase the width */
     height: 15px; /* Increase the height */
     transform: scale(1.5); /* Scale it up */
     -webkit-transform: scale(1.5); /* For older webkit browsers */
-}
 
+}
 label {
     font-size: 16px;
 }
+
 
 ._button .button1{
     text-align: center;
@@ -174,19 +187,22 @@ input[type="button"]:hover {
     background-color: #555;
 }
 
+
   
 .heading{
-    margin-top: 0%;
-    text-align:right;
+    color: #000;
+    margin-top: 10%;
+    text-align:center;
    
 }
 .main_heading{
     position: relative;
-    text-align:center;
-    top: 80px;
-    font-size: 40px;
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
+    left: 50%;
+        text-align: center;
+       ;/* Space from the top of the page */
+        font-size: 40px;
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
 }
 .sub_heading{
     text-align: right;
@@ -195,7 +211,7 @@ input[type="button"]:hover {
 }
 
 .form_container h1{
+    text-align: center;
     text-decoration-color:black ;
 }
-
 }

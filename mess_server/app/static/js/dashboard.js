@@ -68,3 +68,17 @@ document.getElementById('search_input').addEventListener('focus', function() {
       }
     });
   });
+
+function setMainWindoeBlur(){
+    const div = document.getElementById("container_div");
+    const sub_div = document.getElementById("settings_div");
+    div.style.filter = "blur(5px)";
+    sub_div.style.display = "block"
+}
+
+function setMainWindoeNotBlur(){
+    const div = document.getElementById("container_div");
+    const sub_div = document.getElementById("settings_div");
+    div.style.filter = "none";
+    sub_div.style.display = "none"
+}

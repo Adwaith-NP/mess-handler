@@ -21,6 +21,14 @@ function setValus(data){
     document.getElementById('due_field').value = data.totalMoney - data.givenMoney;
     document.getElementById('startDate').value = formatDate(data.startDate);
     document.getElementById('endDate').value = formatDate(data.exp_date);
+    // times
+    document.getElementById('breakfast').checked = data.breakFast;
+    document.getElementById('lunch').checked = data.lunch;
+    document.getElementById('dinner').checked = data.dinner;
+    //end at
+    document.getElementById('EDbreakfast').checked = data.ed_breakFast;
+    document.getElementById('EDlunch').checked = data.ed_lunch;
+    document.getElementById('EDdinner').checked = data.ed_dinner;
 }
 
 

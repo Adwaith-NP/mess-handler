@@ -56,34 +56,38 @@ body{
             font-family: Arial, Helvetica, sans-serif;
             font-style: italic;
             display:flex;
-            flex-direction: column;    
-            gap: 12px;
+            flex-direction: column; 
+            text-align: center;   
+            
     
         }
         .form_row {
             display: flex;
-            gap: 12px; /* Space between Mobile and Email sections */
+            gap: 20px; /* Space between Mobile and Email sections */
         }
         
         .form_half {
+            
+            gap: 84px;
             flex: 1;
+            align-items: center;
             display: flex;
-            align-items:center;
-            gap: 1px;
+            flex-direction:row;
+            
             
         }
-        
-        .form_half label {
-            width: 100%; /* Adjust label width if necessary */
+        .form_half label{
+            display: flex;
+            width: 5vh;
+            align-items: center;
         }
         
-        .form_half input {
-            flex: 1;
-            padding: 10px;
-            border: 2px solid #000;
-            border-radius: 20px;
-            font-size: 16px;
+   
         }
+        
+       
+            
+           
     .form_group{
 
         
@@ -99,7 +103,7 @@ body{
 
 .form_group label {
 
-    
+    display:flex;
     width: 8vw;
     font-size: 16px;
     color: #333;
@@ -111,8 +115,6 @@ body{
 .form_group input[type="number"],
 .form_group input[type="date"] {  
   
-{
-
 
 }
 
@@ -136,7 +138,7 @@ body{
     }
 
     
-}
+
 
 
 input[type="checkbox"]{
@@ -181,40 +183,40 @@ input[type="button"] {
     margin-left: 2vw;
     margin-top:12px;
 }
+input[type="submit"] {
+    width: 17vw;
+     height: 5vh;
+     padding: 1px 20px;
+     
+     color: #fff;
+     border: none;
+     border-radius: 20px;
+     cursor: pointer;
+     margin-left: 2vw;
+     margin-top:12px;
+ }
 
 
 input[type="button"]:hover {
     background-color: #555;
 }
+input[type="submit"]:hover {
+    background-color: #555;
+}
 
 
   
-.heading{
-    color: #0c0909;
-    margin-top: 10%;
-    text-align:center;
-   
-}
 .main_heading{
-    position: relative;
-    top: 10%;
-    left: 50%;
-        text-align: center;
-       ;/* Space from the top of the page */
-        font-size: 40px;
-        color: rgb(0, 0, 0);
-        font-family: Arial, Helvetica, sans-serif;
-}
-.sub_heading{
     text-decoration: underline;
-    top: 10%;
-    margin-left:10px ;
-    left: 20%;
-    position: absolute;
-    text-align:center;
-    color: #000000;
-
+    text-align: center;
+   
+    position: absolute;  
+       /* Space from the top of the page */
+        
+        
+        
 }
+
 
 .form_container h1{
     text-align: center;

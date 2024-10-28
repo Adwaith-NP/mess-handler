@@ -290,7 +290,6 @@ def update_expDate_as_per_leave_API(request):
                 expGraterThanEndDate = list((customer_data.objects.filter(exp_date__gt=(endDate))).values())
                 ## its update the custermers that bitween start and end date
                 for cust in customerInBitween:
-                    print("BB",cust['name'],cust['exp_date'])
                     customerInstance = customer_data.objects.get(userID = cust['userID'])
                     cusExpDate = cust['exp_date']
                     updateDays = ((cusExpDate-startDateInDateFormat).days)+1
@@ -298,7 +297,6 @@ def update_expDate_as_per_leave_API(request):
                     customerInstance.save()
                 ## its update the custermers that grater than endDate
                 for cust in expGraterThanEndDate:
-                    print("AA",cust['name'],cust['exp_date'])
                     customerInstance = customer_data.objects.get(userID = cust['userID'])
                     updateDays = ((endDateInDateFormat-startDateInDateFormat).days)
                     customerInstance.exp_date = customerInstance.exp_date + timedelta(days=updateDays+1)

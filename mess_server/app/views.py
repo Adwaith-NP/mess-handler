@@ -125,7 +125,6 @@ def search_query(request):
             result = customer_data.objects.filter(name__icontains = data)
             result_list = [{'name':person.name,'startDate':person.startDate,'end_date':person.exp_date,'userID':person.userID} for person in result]
             returnData = validatePersons(result_list)
-            print(returnData)
             # return the search result
             return JsonResponse({'message': returnData}, status=200)
         else:
@@ -286,14 +285,27 @@ def update_expDate_as_per_leave_API(request):
         if startDate and endDate:
             startDateInDateFormat = datetime.strptime(startDate, '%Y-%m-%d').date()
             endDateInDateFormat = datetime.strptime(endDate, '%Y-%m-%d').date()
-            customer = customer_data.objects.filter(exp_date__range=(startDate,endDate))
-            for cust in customer:
-                customerInstance = customer_data.objects.get(userID = cust.userID)
-                cusExpDate = cust.exp_date
-                updateDays = ((cusExpDate-startDateInDateFormat).days)+1
-                customerInstance.exp_date = endDateInDateFormat + timedelta(days=updateDays)
-                customerInstance.save()
-            return JsonResponse({'message': 'ok'}, status=200)
+            if endDateInDateFormat >= startDateInDateFormat:
+                customerInBitween = list((customer_data.objects.filter(exp_date__range=(startDate,endDate))).values())
+                expGraterThanEndDate = list((customer_data.objects.filter(exp_date__gt=(endDate))).values())
+                ## its update the custermers that bitween start and end date
+                for cust in customerInBitween:
+                    print("BB",cust['name'],cust['exp_date'])
+                    customerInstance = customer_data.objects.get(userID = cust['userID'])
+                    cusExpDate = cust['exp_date']
+                    updateDays = ((cusExpDate-startDateInDateFormat).days)+1
+                    customerInstance.exp_date = endDateInDateFormat + timedelta(days=updateDays)
+                    customerInstance.save()
+                ## its update the custermers that grater than endDate
+                for cust in expGraterThanEndDate:
+                    print("AA",cust['name'],cust['exp_date'])
+                    customerInstance = customer_data.objects.get(userID = cust['userID'])
+                    updateDays = ((endDateInDateFormat-startDateInDateFormat).days)
+                    customerInstance.exp_date = customerInstance.exp_date + timedelta(days=updateDays+1)
+                    customerInstance.save()
+                return JsonResponse({'message': 'Leave updated'}, status=200)
+            else:
+                return JsonResponse({'message': 'Date\'s are not currect'}, status=400)
         else:
             return JsonResponse({'message': 'No data provided'}, status=400)
     else:

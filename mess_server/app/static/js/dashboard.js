@@ -100,7 +100,7 @@ function setLeave(){
     })
     .then(data => {
         if (data.message) {
-            alert('Leave updated')
+            alert(data.message)
         } else {
             alert(data.error);
         }

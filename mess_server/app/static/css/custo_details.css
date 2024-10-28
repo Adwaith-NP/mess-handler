@@ -53,16 +53,16 @@ body{
        
         }
         .form_details{
-            text-transform: uppercase;
+            font-family: Arial, Helvetica, sans-serif;
+            font-style: italic;
             display:flex;
-            flex-direction: column;
-    
-    gap: 12px;
+            flex-direction: column;    
+            gap: 12px;
     
         }
         .form_row {
             display: flex;
-            gap: 7px; /* Space between Mobile and Email sections */
+            gap: 12px; /* Space between Mobile and Email sections */
         }
         
         .form_half {
@@ -87,9 +87,10 @@ body{
     .form_group{
 
         
-
-        text-transform: uppercase;
-       height: 3vw;
+        background-color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: italic;
+        height: 3vw;
         display:flex;
         align-items:center;
         gap: 5px;
@@ -110,11 +111,10 @@ body{
 .form_group input[type="number"],
 .form_group input[type="date"] {  
   
-.form_half{
-    
- 
+{
 
-    }
+
+}
 
 
     input:focus {
@@ -182,19 +182,6 @@ input[type="button"] {
     margin-top:12px;
 }
 
-input[type="submit"] {
-    width: 17vw;
-     height: 5vh;
-     padding: 1px 20px;
-     
-     color: #fff;
-     border: none;
-     border-radius: 20px;
-     cursor: pointer;
-     margin-left: 2vw;
-     margin-top:12px;
- }
-
 
 input[type="button"]:hover {
     background-color: #555;
@@ -203,22 +190,28 @@ input[type="button"]:hover {
 
   
 .heading{
-    color: #000;
+    color: #0c0909;
     margin-top: 10%;
     text-align:center;
    
 }
 .main_heading{
     position: relative;
+    top: 10%;
     left: 50%;
         text-align: center;
        ;/* Space from the top of the page */
         font-size: 40px;
-        color: black;
+        color: rgb(0, 0, 0);
         font-family: Arial, Helvetica, sans-serif;
 }
 .sub_heading{
-    text-align: right;
+    text-decoration: underline;
+    top: 10%;
+    margin-left:10px ;
+    left: 20%;
+    position: absolute;
+    text-align:center;
     color: #000000;
 
 }
@@ -226,5 +219,4 @@ input[type="button"]:hover {
 .form_container h1{
     text-align: center;
     text-decoration-color:black ;
-}
 }

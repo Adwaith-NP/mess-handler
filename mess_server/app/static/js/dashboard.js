@@ -82,3 +82,31 @@ function setMainWindoeNotBlur(){
     div.style.filter = "none";
     sub_div.style.display = "none"
 }
+
+function setLeave(){
+    const startLeave = document.getElementById("leave_start").value;
+    const endLeave = document.getElementById("end_leave").value;
+    fetch(`http://127.0.0.1:8000/leaveAPI?leave_start=${encodeURIComponent(startLeave)}&end_leave=${encodeURIComponent(endLeave)}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();  // Parse the response as JSON
+    })
+    .then(data => {
+        if (data.message) {
+            alert('Leave updated')
+        } else {
+            alert(data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Fetch error:', error);
+        alert('An error occurred');
+    });
+}

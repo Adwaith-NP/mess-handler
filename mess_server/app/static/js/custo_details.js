@@ -16,7 +16,7 @@ function setValus(data){
     document.getElementById('num_field').value = data.mobileNumber;
     document.getElementById('email_field').value = data.email;
     document.getElementById('loc_field').value = data.location;
-    document.getElementById('days_field').value = data.totalDays;
+    // document.getElementById('days_field').value = data.totalDays;
     document.getElementById('given_field').value = data.givenMoney;
     document.getElementById('due_field').value = data.totalMoney - data.givenMoney;
     document.getElementById('startDate').value = formatDate(data.startDate);

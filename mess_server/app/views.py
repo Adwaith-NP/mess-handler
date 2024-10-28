@@ -46,7 +46,15 @@ def add_customer(request):
         addMealsList = [False,False,False]
         endMealsList = [False,False,False]
         
-        vareables = [userIDGet,nameGet,mobile_number,locationGet,totalAmount,startDateGet,totalDaysGet,givenAmount,endDate]
+        vareables = [userIDGet,
+                     nameGet,
+                     mobile_number,
+                     locationGet,
+                     totalAmount,
+                     startDateGet,
+                     totalDaysGet,
+                     givenAmount,
+                     endDate]
         if any(not elements for elements in vareables):
             ##return a message
             print("not fill")
@@ -183,6 +191,79 @@ def userListAPI(request):
     
     
 def detailEdit(request,userID):
+    if request.method == 'POST':
+        userIDGet = request.POST.get('user_field_name',None)
+        nameGet = request.POST.get('name_field_name',None)
+        mobile_number = request.POST.get('num_field_name',None)
+        locationGet = request.POST.get('loc_field_name',None)
+        emailGet = request.POST.get('email_field_name',None)
+        startDateGet = request.POST.get('StartDate',None)
+        givenAmount = request.POST.get('given_field_name',None)
+        endDate = request.POST.get('EndDate',None)
+        #added food time
+        addMeals = request.POST.getlist('meal')
+        ##ending food time
+        endMeals = request.POST.getlist('ed_meal')
+        
+        addMealsList = [False,False,False]
+        endMealsList = [False,False,False]
+        
+        vareables = [userIDGet,
+                     nameGet,
+                     mobile_number,
+                     locationGet,
+                     startDateGet,
+                     givenAmount,
+                     endDate]
+        if any(not elements for elements in vareables):
+            ##return a message
+            print("not fill")
+            return redirect('main_app:add_customer')
+        if emailGet:
+            if not is_valid_email(emailGet):
+                print("email")
+                return redirect('main_app:add_customer')
+        if not is_valid_phone(mobile_number):
+            print("phone")
+            return redirect('main_app:add_customer')
+        
+        
+        for item in addMeals:
+            if "BREAKFAST" == item:
+                addMealsList[0] = True
+            elif "LUNCH"  == item:
+                addMealsList[1] = True
+            elif "DINNER" == item:
+                addMealsList[2] = True
+        
+        for item in endMeals:
+            if "ed_BREAKFAST" == item:
+                endMealsList[0] = True
+            elif "ed_LUNCH"  == item:
+                endMealsList[1] = True
+            elif "ed_DINNER" == item:
+                endMealsList[2] = True
+                
+        customer_as_per_id = customer_data.objects.get(userID = userIDGet)                
+        updats = {
+                             'name' : nameGet,
+                             'mobileNumber' : mobile_number,
+                             'location' : locationGet,
+                             'email' : emailGet,
+                             'startDate' : startDateGet,
+                             'breakFast' : addMealsList[0],
+                             'lunch' : addMealsList[1],
+                             'dinner' : addMealsList[2],
+                             'ed_breakFast' : endMealsList[0],
+                             'ed_lunch' : endMealsList[1],
+                             'ed_dinner' : endMealsList[2],
+                             'exp_date' : endDate,
+                             'givenMoney' : float(givenAmount),
+                            }   
+        customer_as_per_id.__dict__.update(updats)
+        customer_as_per_id.save()
+        return redirect('main_app:detailEdit',userIDGet)
+        
     return render(request,'custo_details.html',{'userID':userID})
 
 def detailEditAPI(request):
@@ -194,5 +275,26 @@ def detailEditAPI(request):
             return JsonResponse({'message': userDataToDic}, status=200)
         else:
             return JsonResponse({'message': 'No userID provided'}, status=400)
+    else:
+        return JsonResponse({'message': 'Invalid request method'}, status=405)
+    
+    
+def update_expDate_as_per_leave_API(request):
+    if request.method == 'GET':
+        startDate = request.GET.get('leave_start',None)
+        endDate = request.GET.get('end_leave',None)
+        if startDate and endDate:
+            startDateInDateFormat = datetime.strptime(startDate, '%Y-%m-%d').date()
+            endDateInDateFormat = datetime.strptime(endDate, '%Y-%m-%d').date()
+            customer = customer_data.objects.filter(exp_date__range=(startDate,endDate))
+            for cust in customer:
+                customerInstance = customer_data.objects.get(userID = cust.userID)
+                cusExpDate = cust.exp_date
+                updateDays = ((cusExpDate-startDateInDateFormat).days)+1
+                customerInstance.exp_date = endDateInDateFormat + timedelta(days=updateDays)
+                customerInstance.save()
+            return JsonResponse({'message': 'ok'}, status=200)
+        else:
+            return JsonResponse({'message': 'No data provided'}, status=400)
     else:
         return JsonResponse({'message': 'Invalid request method'}, status=405)

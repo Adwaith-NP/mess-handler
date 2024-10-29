@@ -102,7 +102,7 @@ function setLeave(){
         if (data.message) {
             alert(data.message)
         } else {
-            alert(data.error);
+            alert(data.message);
         }
     })
     .catch(error => {

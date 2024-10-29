@@ -12,5 +12,6 @@ urlpatterns = [
     path("userListAPI/",views.userListAPI,name="listAPI"),
     path("detail-edit/<str:userID>/",views.detailEdit,name="detailEdit"),
     path("detail-editAPI/",views.detailEditAPI,name="detailEditAPI"),
-    path('leaveAPI/',views.update_expDate_as_per_leave_API,name="leaveAPI")
+    path('leaveAPI/',views.update_expDate_as_per_leave_API,name="leaveAPI"),
+    path('deleteAPI/',views.deleteUser,name='deleteAPI'),
 ]

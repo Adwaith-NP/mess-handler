@@ -1,11 +1,12 @@
 from django.shortcuts import render,redirect
 import re
 from django.http import JsonResponse
-from .models import customer_data
+from .models import customer_data,deletedCustemers,leaveDates
 from django.db.models import F
 from datetime import timedelta,datetime
 from django.utils import timezone
 from django.forms.models import model_to_dict
+import json
 
 # Create your views here.
 def is_valid_email(email):
@@ -285,6 +286,11 @@ def update_expDate_as_per_leave_API(request):
         if startDate and endDate:
             startDateInDateFormat = datetime.strptime(startDate, '%Y-%m-%d').date()
             endDateInDateFormat = datetime.strptime(endDate, '%Y-%m-%d').date()
+            
+            startDateExits = leaveDates.objects.filter(startDate__lte = endDateInDateFormat,endDate__gte = startDateInDateFormat).exists()
+            if startDateExits:
+                return JsonResponse({'message': f'Already taken leave in between {startDate} to {endDate}'}, status=200)
+            
             if endDateInDateFormat >= startDateInDateFormat:
                 customerInBitween = list((customer_data.objects.filter(exp_date__range=(startDate,endDate))).values())
                 expGraterThanEndDate = list((customer_data.objects.filter(exp_date__gt=(endDate))).values())
@@ -301,10 +307,33 @@ def update_expDate_as_per_leave_API(request):
                     updateDays = ((endDateInDateFormat-startDateInDateFormat).days)
                     customerInstance.exp_date = customerInstance.exp_date + timedelta(days=updateDays+1)
                     customerInstance.save()
+                leaveDays = leaveDates(startDate=startDateInDateFormat,endDate = endDateInDateFormat)
+                leaveDays.save()
                 return JsonResponse({'message': 'Leave updated'}, status=200)
             else:
                 return JsonResponse({'message': 'Date\'s are not currect'}, status=400)
         else:
             return JsonResponse({'message': 'No data provided'}, status=400)
+    else:
+        return JsonResponse({'message': 'Invalid request method'}, status=405)
+    
+    
+def deleteUser(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        user_ID = data.get('userID')
+        name = data.get('name')
+        location = data.get('location')
+        mobileNumber = data.get('mobileNumber')
+        email = data.get('email','Not given')
+        
+        if user_ID:
+            customerInstance = customer_data.objects.get(userID=user_ID)
+            deleteData = deletedCustemers(name = name,location = location,mobileNumber = mobileNumber,email = email)
+            customerInstance.delete()
+            deleteData.save()
+            return JsonResponse({'message': 'User Deleted'}, status=200)
+        else:
+                return JsonResponse({'message': 'error occured'}, status=400)
     else:
         return JsonResponse({'message': 'Invalid request method'}, status=405)

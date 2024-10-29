@@ -25,3 +25,19 @@ class customer_data(models.Model):
     
     def __str__(self):
         return f"{self.name} - {self.userID}"
+    
+class deletedCustemers(models.Model):
+    name = models.CharField(max_length=25,null=False)
+    location = models.TextField(null=True)
+    mobileNumber = models.CharField(null=False,max_length=15)
+    email = models.CharField(null=True,max_length = 50)
+    
+    def __str__(self):
+        return self.name
+    
+class leaveDates(models.Model):
+    startDate = models.DateField(null=False)
+    endDate = models.DateField(null=False)
+    
+    def __str__(self):
+        return self.startDate

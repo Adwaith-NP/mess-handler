@@ -58,3 +58,51 @@ function collectData(userID){
         alert('An error occurred');
     })
 }
+
+function deleteUser(){
+    const userConfirmed = confirm("Do you want to delete?");
+    if(userConfirmed){
+    const csrf_token = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+    const userID = document.getElementById('user_field').value;
+    const name = document.getElementById('name_field').value;
+    const location = document.getElementById('loc_field').value;
+    const mobileNumber = document.getElementById('num_field').value;
+    const email = document.getElementById('email_field').value;
+
+    fetch(`http://127.0.0.1:8000/deleteAPI/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrf_token // Pass the CSRF token here
+            },
+        body : JSON.stringify({ 
+            userID: userID,
+            name : name,
+            location : location,
+            mobileNumber : mobileNumber,
+            email : email,
+         }) 
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();  // Parse the response as JSON
+    })
+    .then(data => {
+        if (data.message) {
+            alert('customer data deleted')
+            window.location.href = "http://127.0.0.1:8000/dashboard/";
+        } else {
+            alert('Error: ' + data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Fetch error:', error);
+        alert('An error occurred');
+    })
+}
+}

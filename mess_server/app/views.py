@@ -288,6 +288,7 @@ def update_expDate_as_per_leave_API(request):
             endDateInDateFormat = datetime.strptime(endDate, '%Y-%m-%d').date()
             
             startDateExits = leaveDates.objects.filter(startDate__lte = endDateInDateFormat,endDate__gte = startDateInDateFormat).exists()
+            ## to determine is the give date alredy have a leave data
             if startDateExits:
                 return JsonResponse({'message': f'Already taken leave in between {startDate} to {endDate}'}, status=200)
             

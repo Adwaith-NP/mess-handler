@@ -152,11 +152,15 @@ def userListAPI(request):
         if data:
             if data == 'Expired':
                 expired_records = customer_data.objects.filter(exp_date__lt=today)
-                expired_persons = [{'name':person.name,'expDate':person.exp_date,'userID':person.userID} for person in expired_records]
+                expired_persons = [{'name':person.name,
+                                    'expDate':person.exp_date,
+                                    'userID':person.userID} for person in expired_records]
                 return JsonResponse({'message': expired_persons}, status=200)
             elif data == 'Payment':
                 remainMoneyPersons = customer_data.objects.exclude(totalMoney=F('givenMoney'))
-                due_money_persons = [{'name':person.name,'dueAmount':(person.totalMoney-person.givenMoney),'userID':person.userID} for person in remainMoneyPersons]
+                due_money_persons = [{'name':person.name,
+                                      'dueAmount':(person.totalMoney-person.givenMoney),
+                                      'userID':person.userID} for person in remainMoneyPersons]
                 return JsonResponse({'message': due_money_persons}, status=200)
             elif data == 'Break_Fast':
                 break_fast_customers = customer_data.objects.filter(breakFast = True)

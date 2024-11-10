@@ -7,7 +7,7 @@ import time
 def run_server():
     current_directory = os.path.dirname(os.path.abspath(__file__))
     subprocess.run(
-        ["python3", "manage.py", "runserver"], 
+        ["python", "manage.py", "runserver"], 
         cwd=current_directory
     )
 

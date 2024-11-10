@@ -21,8 +21,11 @@ def is_valid_phone(phone):
 def giveUserID(request):
     if request.method == 'GET':
         lastUserId = customer_data.objects.all().order_by('-id').first()
-        newUserID = int(lastUserId.userID)+1 + 1000000
-        newUserID = str(newUserID)[1:]
+        if lastUserId:
+            newUserID = int(lastUserId.userID)+1 + 1000000
+            newUserID = str(newUserID)[1:]
+        else:
+            newUserID = "000000"
         return JsonResponse({"userID": newUserID})
 
 

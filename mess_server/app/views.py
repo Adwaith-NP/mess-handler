@@ -121,6 +121,16 @@ def validatePersons(data):
             person['color'] = 'green'
     return data
 
+def validatePersonsForTime(data):
+    current_date = timezone.now().date()
+    for person in data:
+        exp_date = person['end_date']
+        if current_date > exp_date or (current_date == exp_date and not person['endMeals']):
+            person['color'] = 'red'
+        else:
+            person['color'] = 'green'
+    return data
+
 ##Search query
 def search_query(request):
     if request.method == 'GET':
@@ -169,25 +179,25 @@ def userListAPI(request):
                 break_fast_customers = customer_data.objects.filter(breakFast = True)
                 break_fast_customers_data = [
                     {'name':person.name,'location':person.location,
-                     'userID':person.userID,'end_date':person.exp_date} for person in break_fast_customers
+                     'userID':person.userID,'end_date':person.exp_date,'endMeals':person.ed_breakFast} for person in break_fast_customers
                     ]
-                exp_break_fast_customers_data = validatePersons(break_fast_customers_data)
+                exp_break_fast_customers_data = validatePersonsForTime(break_fast_customers_data)
                 return JsonResponse({'message': exp_break_fast_customers_data}, status=200)
             elif data == 'lunch':
                 lunch_customers = customer_data.objects.filter(lunch = True)
                 lunch_customers_data = [
                     {'name':person.name,'location':person.location,
-                     'userID':person.userID,'end_date':person.exp_date} for person in lunch_customers
+                     'userID':person.userID,'end_date':person.exp_date,'endMeals':person.ed_lunch} for person in lunch_customers
                     ]
-                exp_lunch_customers_data = validatePersons(lunch_customers_data)
+                exp_lunch_customers_data = validatePersonsForTime(lunch_customers_data)
                 return JsonResponse({'message': exp_lunch_customers_data}, status=200)
             elif data == 'dinner':
                 dinner_customers = customer_data.objects.filter(dinner = True)
                 dinner_customers_data = [
                     {'name':person.name,'location':person.location,
-                     'userID':person.userID,'end_date':person.exp_date} for person in dinner_customers
+                     'userID':person.userID,'end_date':person.exp_date,'endMeals':person.ed_dinner} for person in dinner_customers
                     ]
-                exp_dinner_customers_data = validatePersons(dinner_customers_data)
+                exp_dinner_customers_data = validatePersonsForTime(dinner_customers_data)
                 return JsonResponse({'message': exp_dinner_customers_data}, status=200)
             else:
                 return JsonResponse({'message': 'Invalid thaem selected'}, status=400)
@@ -199,18 +209,20 @@ def userListAPI(request):
     
 def detailEdit(request,userID):
     if request.method == 'POST':
-        userIDGet = request.POST.get('user_field_name',None)
-        nameGet = request.POST.get('name_field_name',None)
-        mobile_number = request.POST.get('num_field_name',None)
-        locationGet = request.POST.get('loc_field_name',None)
-        emailGet = request.POST.get('email_field_name',None)
+        userIDGet = request.POST.get('user_field',None)
+        nameGet = request.POST.get('name_field',None)
+        mobile_number = request.POST.get('num_field',None)
+        locationGet = request.POST.get('loc_field',None)
+        emailGet = request.POST.get('email_field',None)
+        totalAmount = request.POST.get('amo_field',None)
         startDateGet = request.POST.get('StartDate',None)
-        givenAmount = request.POST.get('given_field_name',None)
+        totalDaysGet = request.POST.get('days_field',None)
+        givenAmount = request.POST.get('given_field',None)
         endDate = request.POST.get('EndDate',None)
         #added food time
-        addMeals = request.POST.getlist('meal')
+        addMeals = request.POST.getlist('meals')
         ##ending food time
-        endMeals = request.POST.getlist('ed_meal')
+        endMeals = request.POST.getlist('end_meals')
         
         addMealsList = [False,False,False]
         endMealsList = [False,False,False]
@@ -219,7 +231,9 @@ def detailEdit(request,userID):
                      nameGet,
                      mobile_number,
                      locationGet,
+                     totalAmount,
                      startDateGet,
+                     totalDaysGet,
                      givenAmount,
                      endDate]
         if any(not elements for elements in vareables):
@@ -266,6 +280,8 @@ def detailEdit(request,userID):
                              'ed_dinner' : endMealsList[2],
                              'exp_date' : endDate,
                              'givenMoney' : float(givenAmount),
+                             'totalDays':totalDaysGet,
+                             'totalMoney':totalAmount,
                             }   
         customer_as_per_id.__dict__.update(updats)
         customer_as_per_id.save()

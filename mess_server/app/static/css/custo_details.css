@@ -1,12 +1,12 @@
 body{
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
 }
-
 .container{
-    display:flex;
+
+    display: flex;
     height: 100vh;
-    max-height: 100vh;
 }
 
 .menu_div{
@@ -18,7 +18,7 @@ body{
     text-align: center;
 } h1 {
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial;
     font-style: italic;
 }
 
@@ -29,7 +29,7 @@ body{
     color: white;
     font-size: large;
     margin-top: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial;
 }
 .dash_img{
     width: 70px;
@@ -37,188 +37,121 @@ body{
     margin-bottom: 0.5px;
 }
 
+
 .form_container{
-    display:flex;
-    margin-top: 6vw;
-   
     
  
         width: 70%;
         padding: 70px;
-        input{
+        input:not([type='button'],[type='submit']){
+            width: 20vw;
             padding: 10px;
             border-color: #000000;
             border-radius: 20px;
         font-size: 16px;
        
         }
-        .form_details{
-            font-family: Arial, Helvetica, sans-serif;
-            font-style: italic;
-            display:flex;
-            flex-direction: column; 
-            text-align: center;   
-            
     
-        }
-        .form_row {
-            display: flex;
-            gap: 20px; /* Space between Mobile and Email sections */
-        }
-        
-        .form_half {
-            
-            gap: 84px;
-            flex: 1;
-            align-items: center;
-            display: flex;
-            flex-direction:row;
-            
-            
-        }
-        .form_half label{
-            display: flex;
-            width: 5vh;
-            align-items: center;
-        }
-        
-   
-        }
-        
-       
-            
-           
-    .form_group{
-
-        
-        background-color: #fff;
-        font-family: Arial, Helvetica, sans-serif;
-        font-style: italic;
-        height: 3vw;
-        display:flex;
-        align-items:center;
-        gap: 5px;
-        width: 100%;
-    }
-
-.form_group label {
-
-    display:flex;
-    width: 8vw;
-    font-size: 16px;
-    color: #333;
-}
-
-.form_group input[type="text"],
-.form_group input[type="tel"],
-.form_group input[type="email"],
-.form_group input[type="number"],
-.form_group input[type="date"] {  
-  
-
-}
-
-
     input:focus {
         border-color: #af4c4c;
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
         outline: none;
     }
-    
     input::placeholder {
         color: #000000;
         font-style: italic;
     }
-    .form_details{
-        margin-top: 10vw;
-        margin-left: 3px;
-        display:flex;
-        gap: 10px;
-        margin-bottom: 2px;
+    .form_grid{
+        margin-left: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 20px;
     }
-
+.input_1{
+    display: inline-flex;
+    flex-direction: column;
     
+}
+
+.meal_opt{
+    display: inline-flex;
+     
+    text-align: left;
+    margin-left: 9vh;
+    text-decoration: solid;
 
 
-
+}
 input[type="checkbox"]{
-
-
     width: 15px;  /* Increase the width */
     height: 15px; /* Increase the height */
     transform: scale(1.5); /* Scale it up */
     -webkit-transform: scale(1.5); /* For older webkit browsers */
-
 }
+
 label {
     font-size: 16px;
 }
+}
 
-
-._button .button1{
+.submit_button{
     text-align: center;
-    padding: 10px;
-    background-color: #f10c0c;
-            border-color: #000000;
-            border-radius: 20px;
     
 }
-._button .button2{
-    text-align: center;
-    padding: 10px;
-    background-color: #16c35e;
-            border-color: #000000;
-            border-radius: 20px;
-    
-}
-input[type="button"] {
-   width: 17vw;
-    height: 5vh;
-    padding: 1px 20px;
-    
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-left: 2vw;
-    margin-top:12px;
-}
-input[type="submit"] {
-    width: 17vw;
-     height: 5vh;
-     padding: 1px 20px;
-     
-     color: #fff;
-     border: none;
-     border-radius: 20px;
-     cursor: pointer;
-     margin-left: 2vw;
-     margin-top:12px;
- }
-
-
-input[type="button"]:hover {
-    background-color: #555;
-}
-input[type="submit"]:hover {
-    background-color: #555;
-}
-
 
   
-.main_heading{
-    text-decoration: underline;
-    text-align: center;
+.heading{
+    margin-top: .5vh;
+    text-align:center;
    
-    position: absolute;  
-       /* Space from the top of the page */
-        
-        
-        
+}
+.main_heading{
+    text-align: center;
+    margin-left: 10px;
+    font-size: 40px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-
 .form_container h1{
-    text-align: center;
     text-decoration-color:black ;
+}
+
+.option_grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 5px;
+}
+
+.red_text{
+    color: red;
+}
+
+.button1{
+    width: 30vw;
+    padding: 10px;
+    border-color: #000000;
+    border-radius: 20px;
+    font-size: 16px;
+    background-color: rgb(188, 64, 64);
+}
+.button1:hover {
+    background-color: rgb(106, 69, 69);
+}
+
+.button2{
+    width: 30vw;
+    padding: 10px;
+    border-color: #000000;
+    border-radius: 20px;
+    font-size: 16px;
+    background-color: green;
+}
+.button2:hover {
+    background-color: rgb(41, 80, 41);
+}
+.lebel_class{
+    display: inline-block;
+    width: 8vw;
 }

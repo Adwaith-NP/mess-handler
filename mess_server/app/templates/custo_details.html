@@ -1,128 +1,153 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'css/custo_details.css' %}">
-    <script src="{% static 'js/custo_details.js' %}" defer></script>
-</head>
-<body onload="collectData('{{userID}}')">
-    <div class="container"> 
-        <!-- Menu Section -->
-        <div class="menu_div">
-            <div class="hd_div">
-                <h1 class="heading">POOPY'S</h1>
-            </div>
-    
-            <div class="dash_logo">
-                <a href="{% url 'main_app:dashboard_view' %}">
-                    <img src="{% static 'img/dash.png' %}" class="dash_img">
-                </a>
-                    <p>Dashboard</p>
-            </div>
-            <div class="dash_logo">
-                <a href="{% url 'main_app:add_customer' %}">
-                    <img src="{% static 'img/user.png' %}" class="dash_img">
-                </a>
-                    <p>Add</p>
-            </div>
-            <div class="dash_logo">
-                <a href="{% url 'main_app:list' %}">
-                    <img src="{% static 'img/list.png' %}" class="dash_img">
-                </a>
-                <p>List</p>
-            </div>
-            <div class="dash_logo">
-                <img src="{% static 'img/order.png' %}" class="dash_img">
-                <p>Order</p>
-            </div>
+<html lang="xml">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/custo_details.css' %}">
+        <script src="{% static 'js/custo_details.js' %}" defer></script>
+    </head>
+    <body onload="collectData('{{userID}}')">
+        <div class="container"> 
             
-        </div>
-
+            <div class="menu_div">
+                <div class="hd_div">
+                    <h1 class="heading_1">POOPY'S</h1>
+                </div>
         
-        <div class="heading">
-        </div>
-            
-            <div class="form_container">
-                <h2 class="main_heading">CUSTOMER DETAILS</h2>
-               
-                <form class="form_details" method="post">
-                    {% csrf_token %} 
-                    <div class="form_group">
-                        <label for="user_id">User ID:</label>
-                        <input type="text" id="user_field" name="user_field_name" placeholder="User ID" readonly>
-                    </div>
-                    <div class="form_group">
-                        <label for="name_field">Name:</label>
-                        <input type="text" id="name_field" name="name_field_name" placeholder="Enter Name">
-                    
-                    </div>
-                    <div class="form_half">
-                        <div class="form_half">
-                            <label for="num_field">Mobile:</label>
-                            <input type="number" id="num_field" name="num_field_name" placeholder="Mobile Number">
-                        </div>
-                        
-                        <div class="form_half">
-                            <label for="email_field">Email:</label>
-                            <input type="email" id="email_field" name="email_field_name" placeholder="Enter Email">
-                        </div>
-                    </div>
-                  
-                    <div class="form_group">
-                        <label for="loc_field">Location:</label>
-                        <input type="text" id="loc_field" name="loc_field_name" placeholder="Location">
-                    </div>
-                    <div class="form_group">
-                        <label>Times:</label>
-                        <input type="checkbox" name="meal" id="breakfast" value="BREAKFAST">
-                        <label for="breakfast">Breakfast</label>
-                        <input type="checkbox" name="meal" id="lunch" value="LUNCH">
-                        <label for="lunch">Lunch</label>
-                        <input type="checkbox" name="meal" id="dinner" value="DINNER">
-                        <label for="dinner">Dinner</label><br>
-                       
-                    </div>
-                    <!-- <div class="form_group">
-                        <label for="days_field">Days:</label>
-                        <input type="number" id="days_field" placeholder="Enter Days">
-                    </div> -->
-                    <div class="form_group">
-                    <label> End Times:</label>
-                    <input type="checkbox" name="ed_meal" id="EDbreakfast" value="ed_BREAKFAST">
-                    <label for="breakfast">Breakfast</label>
-                    <input type="checkbox" name="ed_meal" id="EDlunch" value="ed_LUNCH">
-                    <label for="lunch">Lunch</label>
-                    <input type="checkbox" name="ed_meal" id="EDdinner" value="ed_DINNER">
-                    <label for="dinner">Dinner</label>
-                    </div>
-                    <div class="form_group">
-                        <label for="given_field">Amount Given:</label>
-                        <input type="number" id="given_field" name="given_field_name" placeholder="Amount Given">
-                        <label for="due_field">Due Amount:</label>
-                        <input type="number" id="due_field" name="due_field_name" placeholder="Due Amount" readonly>
-                    </div>
-                    <div class="form_half">
-                        <label for="startDate">Start Date:</label>
-                        <input type="date" id="startDate" name="StartDate">
-                        <label for="endDate">End Date:</label>
-                        <input type="date" id="endDate" name="EndDate">
-                        </div>
-                        <div class="_button">
-                            <input onclick="deleteUser()" type="button" class="button1" value=DELETE>
-                            <input type="submit" class="button2" value=SAVE>
-                            
+                <div class="dash_logo">
+                    <a href="{% url 'main_app:dashboard_view' %}">
+                        <img src="{% static 'img/dash.png' %}" class="dash_img">
+                    </a>
+                        <p>Dashboard</p>
+                </div>
+                <div class="dash_logo">
+                    <a href="{% url 'main_app:add_customer' %}">
+                    <img src="{% static 'img/user.png' %}" class="dash_img">
+                    </a>
+                    <p>Add</p>
+                </div>
+                <div class="dash_logo">
+                    <a href="{% url 'main_app:list' %}">
+                        <img src="{% static 'img/list.png' %}" class="dash_img">
+                    </a>
+                    <p>List</p>
+                </div>
+                <div class="dash_logo">
+                    <img src="{% static 'img/order.png' %}" class="dash_img">
+                    <p>Order</p>
+                </div>
+            </div>
 
+            <div class="form_container">
+                <div class="heading">
+                    <h1 class="main_heading">Customer <span class="red_text">Details</span></h1>
+                </div>
+                <form method="post">
+                    {%csrf_token%}
+                    <div class="form_grid">
+                        <div>
+                            <div class="lebel_class">
+                            <label>UserID</label>
+                        </div>
+                            <input type="user_Id" placeholder="User ID" id="userID_field" name="user_field" readonly>
+                        </div>
+                        <div>
+                            <div class="lebel_class">
+                            <label>Name</label>
+                        </div>
+                            <input type="text" placeholder="Enter Name" id="name_field" name="name_field" >
+                        </div>
+                        <div>
+                            <div class="lebel_class">
+                            <label>Mobile Number</label>
+                        </div>
+                            <input type="number" placeholder="Mobile number" id="num_field" name="num_field" >
+                        </div>
+                        <div>
+                            <div class="lebel_class">
+                            <label>Location</label>
+                        </div>
+                            <input type="text" placeholder="Location" id="loc_field" name="loc_field" >
+                        </div>
+                        <div>
+                            <div class="lebel_class">
+                            <label>Email</label>
+                        </div>
+                            <input type="email" placeholder="Enter Email" id="email_field" name="email_field">
+                        </div>
+                        <div>
+                            <div class="lebel_class">
+                            <label>Total Amount</label>
+                        </div>
+                            <input type="number" placeholder="Total Amount" id="amo_field" name="amo_field" >
+                        </div>
+                        <div>
+                            <div class="lebel_class">
+                            <label>Start date</label>
+                        </div>
+                            <input type="date" placeholder="Startdate" id="startDate" name="StartDate" >
+                        </div>
+                        <div>
+                            <div class="lebel_class">
+                            <label>Days</label>
+                        </div>
+                            <input type="number" placeholder="Enter Days" id="days_field" name="days_field" onblur="set_end_date()">
+                        </div>
+                        <div>
+                            <div class="lebel_class">
+                            <label>Amount Given</label>
+                        </div>
+                            <input type="number" placeholder="Amount Given" id="given_field" name="given_field" >
+                        </div>
+                        <div>
+                            <div class="lebel_class">
+                            <label>End Date</label>
+                        </div>
+                            <input type="text" placeholder="End Date" id="EndDate" name="EndDate" readonly>
                         </div>
                         
                     </div>
-                
+                    
+                    <div class="form_grid">
+                        <div class="option_grid">
+                            <div>
+                                <input type="checkbox" name="meals" id="meal_breakfast" value="BREAKFAST">
+                                <label>BREAKFAST</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="meals" id="meal_lunch" value="LUNCH">
+                                <label>LUNCH</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="meals" id="meal_dinner" value="DINNER">
+                                <label>DINNER</label>
+                            </div>
+                        </div>
+                        <div class="option_grid">
+                            <div>
+                                <input type="checkbox" name="end_meals" id="end_meal_breakfast" value="ed_BREAKFAST">
+                                <label>BREAKFAST</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="end_meals" id="end_meal_lunch" value="ed_LUNCH">
+                                <label>LUNCH</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="end_meals" id="end_meal_dinner" value="ed_DINNER">
+                                <label>DINNER</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form_grid">
+                        <input onclick="deleteUser()" type="button" class="button1" value=DELETE>
+                        <input type="submit" class="button2" value=SAVE>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
-</form>
-</body>
+    </body>
 </html>

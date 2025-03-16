@@ -18,5 +18,5 @@ I’ve built a mess customer management system designed to run locally on a devi
 
 
 
- ![Uploading Screenshot 2025-03-16 at 8.03.36 PM.png…]()
 
+<img width="1619" alt="Screenshot 2025-03-16 at 8 03 36 PM" src="https://github.com/user-attachments/assets/63770675-c566-4509-8390-5fb19f96cc5e" />
